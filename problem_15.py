@@ -1,6 +1,7 @@
 import numpy as np
 
 def rec(a):
+    # Check if shape already solved
     if str(a) in d:
         return d[str(a)]
     # End of recursion
@@ -8,6 +9,7 @@ def rec(a):
         return 1
     # If square matrix, split and run recursion on one side
     if a.sum() == 0:
+        # Record solved values
         value = 2*rec(a[1:])
         d[str(a)] = value
         return value
@@ -15,6 +17,7 @@ def rec(a):
     if (a == -1).all():
         return 1
     # Otherwise go one step forward and perform recursion on both sides
+    # Record solved values
     value = rec(a[:-1]) + rec(a[1:])
     d[str(a)] = value
     return value
