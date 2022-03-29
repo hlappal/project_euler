@@ -21,6 +21,29 @@ def is_prime(n):
                 res = False
     return res
 
+def get_divisors(n):
+    """Get the proper divisors for a number"""
+    divisors = []
+    d = 1
+    while d < abs(n):
+        if n % d == 0:
+            divisors.append(d)
+        d += 1
+    return divisors
+
+def number_perfectness(n):
+    """Determine if a number is deficient, perfect, or abundant"""
+    s = sum(get_divisors(n))
+    if s < n:
+        # Number is deficient
+        return -1
+    elif s > n:
+        # Number is abundant
+        return 1
+    else:
+        # Number is perfect
+        return 0
+
 def quicksort(array, low, high):
     """Sort array by Quicksort"""
     # Find pivot point
