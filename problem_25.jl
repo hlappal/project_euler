@@ -21,17 +21,27 @@ function digits(n)
 end
 
 function main()
-    i = 1
+    fibs = [1, 1]
     while true
-        n = fib(i)
-        d = digits(n)
-        if d == 3
-            println("The first to have ", d, " digits is the ", i, "'th Fibonacci number ", n)
+        i = length(fibs)
+        append!(fibs, fibs[i] + fibs[i-1])
+        i = length(fibs)
+        if fibs[i] >= 1e99
+            println("The first to have five digits is the ", i, "'th Fibonacci number ", fibs[i])
             break
         end
-        #println("The ", i, "'th Fibonacci number ", n, " has ", d, " digits")
-        i += 1
     end
+    #i = 1
+    #while true
+    #    n = fib(i)
+    #    d = digits(n)
+    #    if d == 3
+    #        println("The first to have ", d, " digits is the ", i, "'th Fibonacci number ", n)
+    #        break
+    #    end
+    #    #println("The ", i, "'th Fibonacci number ", n, " has ", d, " digits")
+    #    i += 1
+    #end
 end
 
 main()
